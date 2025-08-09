@@ -3,6 +3,7 @@ dotenv.config();
 
 import { WebcastPushConnection } from 'tiktok-live-connector';
 import TelegramBot from 'node-telegram-bot-api';
+import { VercelRequest, VercelResponse } from '@vercel/node';
 
 // Environment
 const TIKTOK_USERNAME = process.env.TIKTOK_USERNAME;
@@ -45,7 +46,7 @@ async function sendTelegramAlert(text: string) {
 }
 
 // Connect and listen
-(async () => {
+export const startBot = async () => {
   console.log(`Connecting to TikTok live: ${TIKTOK_USERNAME} ...`);
   try {
     const state = await tiktok.connect();
@@ -95,7 +96,7 @@ async function sendTelegramAlert(text: string) {
     try { tiktok.disconnect(); } catch (e) {}
     process.exit(0);
   });
-})();
+}
 
 // Simple HTML-escape helper
 function escapeHtml(s: string) {
@@ -106,3 +107,5 @@ function escapeHtml(s: string) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+startBot()
