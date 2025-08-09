@@ -4,8 +4,8 @@
   "description": "Forward TikTok Live chat comments to Telegram (TypeScript)",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "yarn install && tsc && node dist/index.js",
+    "build": "yarn install && tsc && tsc --outDir ./public/index.js",
+    "start": "node public/index.js",
     "dev": "ts-node-dev --respawn --transpile-only ./index.ts"
   },
   "author": "jemmyblair",
