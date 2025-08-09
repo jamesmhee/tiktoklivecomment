@@ -3,7 +3,6 @@ dotenv.config();
 
 import { WebcastPushConnection } from 'tiktok-live-connector';
 import TelegramBot from 'node-telegram-bot-api';
-import { VercelRequest, VercelResponse } from '@vercel/node';
 
 // Environment
 const TIKTOK_USERNAME = process.env.TIKTOK_USERNAME;
